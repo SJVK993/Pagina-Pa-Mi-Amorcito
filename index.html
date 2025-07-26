@@ -3,281 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestro eterno amor</title>
-    
-    <!-- Fuentes de Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-    <!-- ============================================= -->
-    <!-- ==== AQUÍ COMIENZA EL CÓDIGO CSS (DISEÑO) ==== -->
-    <!-- ============================================= -->
+    <title>Un Recuerdo</title>
     <style>
-        /* ---- ESTILOS GENERALES ---- */
-        body {
-            background-color: #111111;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            color: #EAEAEA;
-            font-family: 'EB Garamond', serif;
-            font-size: 18px;
-            line-height: 1.6;
+        /* Importamos una fuente desde Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+        /* Estilos para el cuerpo de la página */
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #1a1a1a; /* Un fondo oscuro para mayor contraste */
+            color: #ffffff; /* Color de texto blanco */
+            font-family: 'Cinzel', serif; /* Usamos la fuente importada */
+            display: flex; /* Habilitamos Flexbox */
+            justify-content: center; /* Centramos horizontalmente */
+            align-items: center; /* Centramos verticalmente */
+            text-align: center; /* Centramos el texto por si hay saltos de línea */
         }
 
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            background-color: rgba(26, 26, 26, 0.9);
-            border: 1px solid #444;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            position: relative; /* Necesario para que el z-index funcione */
-            z-index: 10;       /* Asegura que el contenido esté sobre las decoraciones */
+        /* Estilos para el contenedor del mensaje */
+        .message-container {
+            /* El centrado ya se hace en el body, así que este contenedor es simple */
         }
 
-        /* ---- DECORACIONES LATERALES (AHORA CON CORAZONES) ---- */
-        .side-decoration {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 150px; /* Ancho de la decoración */
-            background-repeat: repeat-y; /* Repetir verticalmente */
-            background-position: center; /* Centrar la columna de GIFs */
-            z-index: 1; /* Detrás del contenido principal */
-            opacity: 0.25; /* Un poco más visible */
-            pointer-events: none; /* Para que no se pueda hacer clic en ellas */
+        /* Estilos para el mensaje principal */
+        h1 {
+            font-size: 6vw; /* Tamaño de fuente responsivo (se ajusta al ancho de la ventana) */
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
         }
-        .side-decoration.left {
-            left: 0;
-            background-image: url('https://i.imgur.com/u3XALoz.gif'); /* <<<--- NUEVO LINK DE CORAZÓN FUNCIONAL */
-        }
-        .side-decoration.right {
-            right: 0;
-            background-image: url('https://i.imgur.com/u3XALoz.gif'); /* <<<--- NUEVO LINK DE CORAZÓN FUNCIONAL */
-        }
-
-        /* ---- HEADER ---- */
-        .main-header {
-            text-align: center;
-            padding: 30px 20px;
-            border-bottom: 1px solid #444;
-        }
-        .main-header h1 {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 3.5em;
-            color: #FFFFFF;
-            text-shadow: 0 0 15px rgba(147, 112, 219, 0.4); 
-        }
-        .subtitle { color: #AAAAAA; font-size: 1.1em; font-style: italic; }
-
-        /* ---- ICON GIFS ---- */
-        .icon-gif {
-            height: 28px;
-            vertical-align: -5px;
-            margin-right: 15px;
-            filter: invert(1) brightness(0.8) sepia(1) hue-rotate(200deg);
-        }
-
-        /* ---- CUENTA REGRESIVA ---- */
-        .countdown-section {
-            padding: 20px 0;
-        }
-        .countdown-section h2 {
-            font-family: 'UnifrakturMaguntia', cursive;
-            color: #FFFFFF;
-            font-size: 2.2em;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .countdown-timer { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .time-box { background: #222222; border: 1px solid #444; padding: 15px; width: 120px; text-align: center; }
-        .time-box span { font-family: 'EB Garamond', serif; font-weight: 700; font-size: 2.5em; color: #9370DB; display: block; }
-        .time-box div { font-size: 0.8em; color: #AAAAAA; text-transform: uppercase; }
-
-        /* ---- DIVISOR ELEGANTE ---- */
-        .stylish-divider {
-            border: 0;
-            height: 1px;
-            background-image: linear-gradient(to right, rgba(26, 26, 26, 0), rgba(147, 112, 219, 0.75), rgba(26, 26, 26, 0));
-            margin: 20px auto;
-        }
-
-        /* ---- CONTENIDO PRINCIPAL Y CARDS ---- */
-        .content { padding: 20px; }
-        .card { background-color: rgba(32, 32, 32, 0.7); border: 1px solid #333; margin-bottom: 30px; padding: 25px; }
-        .card h3 { font-family: 'UnifrakturMaguntia', cursive; font-size: 2em; color: #FFFFFF; margin-top: 0; border-bottom: 1px solid #444; padding-bottom: 15px; margin-bottom: 20px; }
-
-        /* ---- GALERÍA DE FOTOS ---- */
-        .photo-gallery { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
-        .photo-gallery img {
-            border: 3px solid #666;
-            width: 200px; height: 200px;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.4s ease;
-        }
-        .photo-gallery img:hover { filter: grayscale(0%); border-color: #9370DB; box-shadow: 0 0 15px rgba(147, 112, 219, 0.5); }
-
-        /* ---- SECCIÓN DE FOTO DESTACADA ---- */
-        .featured-photo {
-            width: 100%;
-            max-width: 500px;
-            display: block;
-            margin: 20px auto;
-            border: 4px solid #666;
-            transition: all 0.4s ease;
-        }
-        .featured-photo:hover { border-color: #9370DB; box-shadow: 0 0 20px rgba(147, 112, 219, 0.6); }
-
-        /* ---- LISTAS PERSONALIZADAS ---- */
-        .qualities-list { list-style: none; padding-left: 0; }
-        .qualities-list li { padding: 8px; margin-bottom: 5px; border-left: 2px solid #555; }
-        .qualities-list li::before { content: '† '; color: #9370DB; margin-right: 10px; }
-
-        /* ---- LISTA DE LINKS ---- */
-        .link-list { list-style: none; padding: 0; }
-        .link-list li { margin-bottom: 12px; border-left: 2px solid #555; padding-left: 15px; }
-        .link-list a { color: #AAAAAA; text-decoration: none; transition: color 0.3s; }
-        .link-list a:hover { color: #9370DB; }
-
-        /* ---- FOOTER ---- */
-        footer { text-align: center; font-size: 0.9em; color: #666; padding: 20px; border-top: 1px solid #444; margin-top: 20px; }
-        .est-date { color: #9370DB; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <!-- Decoraciones de los márgenes -->
-    <div class="side-decoration left"></div>
-    <div class="side-decoration right"></div>
-    
-    <!-- ============================================= -->
-    <!-- ==== AQUÍ COMIENZA EL CONTENIDO DE LA PÁGINA === -->
-    <!-- ============================================= -->
-    <div class="container">
-        <header class="main-header">
-            <h1>Para mi amor.</h1>
-            <p class="subtitle">Para demostrarle lo mucho que la amo y lo mucho que significa para mí.</p>
-        </header>
-
-        <section class="countdown-section">
-            <h2>Cuenta Regresiva para nuestro segundo aniversario</h2>
-            <div id="countdown" class="countdown-timer">
-                <div class="time-box"><span id="days">00</span><div>Days</div></div>
-                <div class="time-box"><span id="hours">00</span><div>Hours</div></div>
-                <div class="time-box"><span id="minutes">00</span><div>Minutes</div></div>
-                <div class="time-box"><span id="seconds">00</span><div>Seconds</div></div>
-            </div>
-        </section>
-
-        <!-- Divisor elegante hecho con CSS -->
-        <hr class="stylish-divider">
-
-        <main class="content">
-            <div class="card">
-                <h3><img src="https://i.gifer.com/embedded/download/WJ6.gif" class="icon-gif" alt="Vela"> A Note for You</h3>
-                <p>Mi amor, después de todo el tiempo que hemos pasado juntos, la verdad es que no me queda duda alguna de que realmente quiero quedarme para siempre junto a usted. Valoro cada segundo que estoy con usted cual si fuera el último. No tenga dudas de que usted literalmente es la mujer de mis sueños, y la mujer por la que he deseado toda mi vida. Realmente esto parece un sueño, pues nunca pensé llegar a estar con alguien como usted. Por favor nunca olvide de cuanto la amo y cuanto significa para mí.</p>
-            </div>
-
-            <div class="card">
-                <h3><img src="https://i.gifer.com/embedded/download/ZlH.gif" class="icon-gif" alt="Espejo"> The Elements of You</h3>
-                <p>Una compilación de los fragmentos que componen tu magia. Pequeños detalles que atesoro.</p>
-                <ul class="qualities-list">
-                    <li>Tus hermosos ojos que nunca me cansare de ver.</li>
-                    <li>Tu sonrisa que aunque no me creas, verdaderamente derrite mi corazón.</li>
-                    <li>Tus exquisitos labios que le ganan a cualquier manjar que haya probado jámas.</li>
-                    <li>Y absolutamente todo de ti. Sinceramente no hay nada que no me encante.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3><img src="https://i.gifer.com/embedded/download/91h.gif" class="icon-gif" alt="Rosa"> Momentos Chatos</h3>
-                <p>Fragmentos de tiempo congelados.</p>
-                <div class="photo-gallery">
-                    <img src="https://i.imgur.com/AymOJoM.jpg" alt="Recuerdo 1">
-                    <img src="https://i.imgur.com/tnHUAG4.jpg" alt="Recuerdo 2">
-                    <img src="https://i.imgur.com/HCVoBnn.jpg" alt="Recuerdo 3">
-                    <img src="https://i.imgur.com/IDnWqjh.jpg" alt="Recuerdo 4">
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3><img src="https://i.gifer.com/embedded/download/5x1.gif" class="icon-gif" alt="Cámara antigua"> A Memory Etched in Time</h3>
-                <img src="https://i.imgur.com/xs85IVt.jpg" alt="Nuestro recuerdo favorito" class="featured-photo">
-                <p>Diría que esta es, pues es literalmente la primera foto que tengo de usted, y la verdad es importante para mi porque desde ese momento considero que ya me gustaba, y pues me hace pensar en como ha pasado el tiempo y lo que hemos pasado juntos.</p>
-            </div>
-
-            <div class="card">
-                <h3><img src="https://i.gifer.com/embedded/download/3eD.gif" class="icon-gif" alt="Cuervo"> Piezas que me recuerdan a usted.</h3>
-                <p>El soundtrack de nuestros días y nuestras noches. Cada nota me recuerda a ti.</p>
-                <ul class="link-list">
-                    <li><a href="https://www.youtube.com/watch?v=8fnJZemFX3s&list=RDGMEMHDXYb1_DDSgDsobPsOFxpA&start_radio=1&rv=m3iqJHi4Hr8" target="_blank">ALI A.K.A. MIND - Tú Ft. Elias Wallace</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=HyS-AAC2rhM" target="_blank">CHYSTEMC - JUST TO LOVE</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=eecTfXxmyuo" target="_blank">Gonzalo Genek - Eres Tú</a></li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h3><img src="https://i.gifer.com/embedded/download/G3ZG.gif" class="icon-gif" alt="Pluma"> A Vow</h3>
-                <p>Prometo siempre tenerte en mi mente y corazón.<br>Nunca dejarte sola ni hacerte dudar de nuestro amor.<br>Juro por Dios siempre amarte y adorarte.<br>Y que siempre serás la única mujer que necesito en mi vida.<br>Te amo.</p>
-                <p style="text-align: right; font-style: italic;">- Jeremy</p>
-            </div>
-        </main>
-
-        <footer>
-            <p>Hecho por el amor de tu vida.</p>
-            <p class="est-date">Est. IX • XI • MMXXIII</p>
-        </footer>
+    <div class="message-container">
+        <h1 id="main-message">Espero y me recuerdes</h1>
     </div>
 
-    <!-- ================================================== -->
-    <!-- ==== AQUÍ COMIENZA EL JAVASCRIPT (FUNCIONALIDAD) === -->
-    <!-- ================================================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // CAMBIA ESTA FECHA POR LA DE TU ANIVERSARIO (AÑO, MES-1, DÍA)
-            const targetDate = new Date('2025-11-09T00:00:00');
+        // No se necesita JavaScript para este diseño,
+        // pero lo dejamos aquí por si quisieras añadir interactividad en el futuro.
+        // Por ejemplo, podrías hacer que el texto cambie al hacer clic.
 
-            // Selección de elementos del DOM
-            const daysEl = document.getElementById('days');
-            const hoursEl = document.getElementById('hours');
-            const minutesEl = document.getElementById('minutes');
-            const secondsEl = document.getElementById('seconds');
-            const countdownEl = document.getElementById('countdown');
-            const countdownTitle = document.querySelector('.countdown-section h2');
+        const messageElement = document.getElementById('main-message');
 
-            function updateCountdown() {
-                const now = new Date();
-                const diff = targetDate - now;
-
-                // Si la fecha ya ha pasado
-                if (diff <= 0) {
-                    countdownEl.innerHTML = "<div class='time-box' style='width: auto; padding: 20px; font-size: 1.2em; border-style: double; border-color: #9370DB;'>¡Nuestro segundo año está aquí!</div>";
-                    countdownTitle.textContent = "La espera ha terminado";
-                    clearInterval(timerInterval); 
-                    return;
-                }
-
-                // Cálculos de tiempo
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                // Función para formatear el tiempo (añadir un 0 si es menor a 10)
-                const formatTime = (time) => time < 10 ? `0${time}` : time;
-                
-                // Actualizar el HTML
-                daysEl.textContent = formatTime(days);
-                hoursEl.textContent = formatTime(hours);
-                minutesEl.textContent = formatTime(minutes);
-                secondsEl.textContent = formatTime(seconds);
-            }
-
-            // Iniciar el contador
-            const timerInterval = setInterval(updateCountdown, 1000);
-            updateCountdown();
+        messageElement.addEventListener('click', () => {
+            // Ejemplo: console.log("Has hecho clic en el mensaje.");
         });
     </script>
+
 </body>
 </html>
